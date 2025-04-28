@@ -1,0 +1,15 @@
+﻿@model User
+
+<h3>Регистрация</h3>
+
+<form method="post" asp-controller="Home" asp-action="Registration">
+    <label asp-for="Name">Отображаемое имя</label> <br />
+    <input asp-for="Name"/><br />
+
+    <label asp-for="Password">Пароль</label> <br />
+    <input asp-for="Password" /> <br />
+
+    <input type="submit" value="Зарегистрироваться"/>
+</form>
+
+<a asp-route="Main">Назад</a>
