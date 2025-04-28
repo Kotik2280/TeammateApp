@@ -1,3 +1,8 @@
 ﻿@model User
 
 <h3>@Model.Name</h3>
+<form method="post" asp-controller="Authorized" asp-action="Quit">
+    <input type="submit" value="Выйти"/>
+</form>
+
+@await Html.PartialAsync("PostForm", new Post())

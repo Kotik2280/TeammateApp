@@ -1,0 +1,13 @@
+﻿@model Post
+
+<h3>Создать объявление</h3>
+
+<form method="post" asp-controller="Authorized" asp-action="PostForm">
+    <label asp-for="Title">Заголовок</label> <br />
+    <input asp-for="Title"/><br />
+
+    <label asp-for="Description">Текст</label> <br />
+    <input asp-for="Description"/><br />
+
+    <input type="submit" value="Отправить"/>
+</form>
