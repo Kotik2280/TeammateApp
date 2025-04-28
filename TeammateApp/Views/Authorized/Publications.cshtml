@@ -4,8 +4,8 @@
 
 <h3>Список постов</h3>
 <ul>
-    @foreach(Post post in Model)
+    @foreach(Post post in Model.OrderByDescending(e => e.Id))
     {
-        <li>[@post.Author] @post.Title <br /> @post.Description</li>
+        <li>[<a asp-controller="Authorized" asp-action="Account" asp-route-name="@post.Author">@post.Author</a>] @post.Title <br /> @post.Description</li>
     }
 </ul>

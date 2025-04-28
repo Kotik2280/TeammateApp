@@ -3,9 +3,11 @@ using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
+using TeammateApp.Attributes;
 
 namespace TeammateApp.Controllers
 {
+    [AutorizeRedirect]
     public class HomeController : Controller
     {
         public DataContext _db;

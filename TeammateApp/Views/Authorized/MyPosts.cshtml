@@ -2,7 +2,7 @@
 
 <h3>Мои посты</h3>
 <ul>
-    @foreach (Post post in Model)
+    @foreach (Post post in Model.OrderByDescending(e => e.Id))
     {
         <li>
             @post.Title <br /> 

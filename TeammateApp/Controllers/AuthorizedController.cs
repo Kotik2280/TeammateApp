@@ -57,5 +57,19 @@ namespace TeammateApp.Controllers
 
             return View(posts);
         }
+        public async Task<IActionResult> Account(string name)
+        {
+            if (HttpContext.User.Identity.Name == name)
+                return RedirectToRoute("Profile");
+
+            User user = await _db.Users.FirstOrDefaultAsync(u => u.Name == name);
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            List<Post> posts = await _db.Posts.Where(p => p.Author == name).ToListAsync();
+            return View(new UserAndPosts(user, posts));
+        }
     }
 }
