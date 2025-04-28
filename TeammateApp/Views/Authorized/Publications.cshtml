@@ -1,0 +1,11 @@
+﻿@model List<Post>
+
+<a asp-route="Profile">Назад</a>
+
+<h3>Список постов</h3>
+<ul>
+    @foreach(Post post in Model)
+    {
+        <li>[@post.Author] @post.Title <br /> @post.Description</li>
+    }
+</ul>

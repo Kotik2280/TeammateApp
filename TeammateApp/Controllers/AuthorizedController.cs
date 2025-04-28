@@ -1,9 +1,10 @@
 ﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using TeammateApp.Models;
+using TeammateApp.Models.ViewModels;
 
 namespace TeammateApp.Controllers
 {
@@ -15,12 +16,14 @@ namespace TeammateApp.Controllers
         {
             _db = db;
         }
-        public IActionResult Profile()
+        public async Task<IActionResult> Profile()
         {
             string name = HttpContext.User.Identity.Name;
-            User user = _db.Users.FirstOrDefault(u => u.Name == name);
+            User user = await _db.Users.FirstOrDefaultAsync(u => u.Name == name);
 
-            return View(user);
+            List<Post> posts = await _db.Posts.Where(p => p.Author == name).ToListAsync();
+
+            return View(new UserAndPosts(user, posts));
         }
         [HttpPost]
         public async Task<IActionResult> Quit()
@@ -42,6 +45,17 @@ namespace TeammateApp.Controllers
             await _db.SaveChangesAsync();
 
             return RedirectToRoute("Profile");
+        }
+        public IActionResult MyPosts()
+        {
+            return PartialView();
+        }
+
+        public async Task<IActionResult> Publications()
+        {
+            List<Post> posts = await _db.Posts.ToListAsync();
+
+            return View(posts);
         }
     }
 }

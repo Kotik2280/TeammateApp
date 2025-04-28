@@ -1,8 +1,9 @@
-﻿@model User
+﻿@model UserAndPosts
 
-<h3>@Model.Name</h3>
+<h3>@Model.User.Name</h3>
 <form method="post" asp-controller="Authorized" asp-action="Quit">
     <input type="submit" value="Выйти"/>
 </form>
-
+<a asp-asp-controller="Authorized" asp-action="Publications">Список постов</a>
 @await Html.PartialAsync("PostForm", new Post())
+@await Html.PartialAsync("MyPosts", Model.Posts)

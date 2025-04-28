@@ -1,0 +1,12 @@
+﻿@model List<Post>
+
+<h3>Мои посты</h3>
+<ul>
+    @foreach (Post post in Model)
+    {
+        <li>
+            @post.Title <br /> 
+            @post.Description
+        </li>
+    }
+</ul>
