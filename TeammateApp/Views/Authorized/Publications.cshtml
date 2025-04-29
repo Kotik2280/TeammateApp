@@ -1,11 +1,31 @@
-﻿@model List<Post>
+﻿@model PostsAndSort
 
 <a asp-route="Profile">Назад</a>
+<form>
+    <select asp-for="SortMethod">
+        <option value="@SortMethods.DateAscending">Сначала старые</option>
+        <option value="@SortMethods.DateDescending">Сначала новые</option>
+    </select>
+    <input type="submit" value="Отсортировать"/>
+</form>
 
 <h3>Список постов</h3>
 <ul>
-    @foreach(Post post in Model.OrderByDescending(e => e.Id))
+    @foreach(Post post in Model.Posts)
     {
-        <li>[<a asp-controller="Authorized" asp-action="Account" asp-route-name="@post.Author">@post.Author</a>] @post.Title <br /> @post.Description</li>
+        <li>[@post.Date] <br />
+            <b>@post.Title</b> <br />
+            @post.Description <br /> 
+            Автор: 
+            @if (post.Author != "Удалённый аккаунт")
+            {
+                <a asp-controller="Authorized" asp-action="Account" asp-route-name="@post.Author">@post.Author</a>
+            }
+            else
+            {
+                <b>[@post.Author]</b>
+            }
+
+        </li>
     }
 </ul>

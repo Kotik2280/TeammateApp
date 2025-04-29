@@ -5,7 +5,8 @@
     @foreach (Post post in Model.OrderByDescending(e => e.Id))
     {
         <li>
-            @post.Title <br /> 
+            [@post.Date]<br />
+            <b>@post.Title</b> <br />
             @post.Description
         </li>
     }

@@ -4,6 +4,9 @@
 <form method="post" asp-controller="Authorized" asp-action="Quit">
     <input type="submit" value="Выйти"/>
 </form>
+<form method="post" asp-controller="Authorized" asp-action="DeleteAccout" asp-route-id="@Model.User.Id">
+    <input type="submit" value="Удалить аккаунт"/>
+</form>
 <a asp-asp-controller="Authorized" asp-action="Publications">Список постов</a>
 @await Html.PartialAsync("PostForm", new Post())
 @await Html.PartialAsync("MyPosts", Model.Posts)

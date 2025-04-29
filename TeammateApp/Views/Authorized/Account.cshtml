@@ -1,5 +1,5 @@
 ﻿@model UserAndPosts
 
-<h3>@Model.User.Name</h3>
+<h3>Профиль пользователя @Model.User.Name</h3>
 <a asp-controller="Authorized" asp-action="Publications">Назад</a>
 @await Html.PartialAsync("MyPosts", Model.Posts)
