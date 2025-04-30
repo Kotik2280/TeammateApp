@@ -3,11 +3,22 @@
 <h3>Создать объявление</h3>
 
 <form method="post" asp-controller="Authorized" asp-action="PostForm">
-    <label asp-for="Title">Заголовок</label> <br />
-    <input asp-for="Title"/><br />
-
-    <label asp-for="Description">Текст</label> <br />
-    <input asp-for="Description"/><br />
+    <p>
+        <label asp-for="Title">Заголовок</label> <br />
+        <input asp-for="Title" /><br />
+        <span asp-validation-for="Title"/>
+    </p>
+    
+    <p>
+        <label asp-for="Description">Текст</label> <br />
+        <input asp-for="Description" /><br />
+        <span asp-validation-for="Description" />
+    </p>
+    
 
     <input type="submit" value="Отправить"/>
 </form>
+
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.5.1.min.js"></script>
+<script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.17.0/jquery.validate.min.js"></script>
+<script src="https://ajax.aspnetcdn.com/ajax/jquery.validation.unobtrusive/3.2.10/jquery.validate.unobtrusive.min.js"></script>
